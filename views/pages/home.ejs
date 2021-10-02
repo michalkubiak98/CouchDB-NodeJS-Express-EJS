@@ -8,16 +8,38 @@
             <br>
             <h1 class="heading">Pet Hotel</h1>
             <br>
+            <% if(pets){ %>
 
-            <br>
-            <h2>Number of Cats: <%-[pets.value[0]] %></h2>
-            <h2>Number of Dogs: <%-[pets.value[1]] %></h2>
-            </p>
-            <p class="lead">
-                <h4>References</h4>
-                <a href="https://medium.com/swlh/master-ejs-template-engine-with-node-js-and-expressjs-979cc22b69be" class="btn btn-secondary">EJS Medium Article</a>
-            </p>
+                <br>
+                <h2>Number of Cats: <%-[pets.value[0]] || 0 %></h2>
+                <h2>Number of Dogs: <%-[pets.value[1]] || 0 %></h2>
+                </p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p class="lead">
+                    <h4>Reference List</h4>
+                    <br>
+                    <a href="https://medium.com/swlh/master-ejs-template-engine-with-node-js-and-expressjs-979cc22b69be" class="btn btn-secondary mb-3">EJS Medium Article</a>
+                    <a href="https://www.youtube.com/watch?v=R6LUMXrAoCE&ab_channel=TraversyMedia" class="btn btn-secondary mb-3">NodeCouchDB Client for Node YouTube tutorial</a>
+                    <a href="https://www.npmjs.com/package/node-couchdb" class="btn btn-secondary">NodeCouchDB Npm Package Documentation</a>
+                    <br>
+                    <h4>Stack Overflow References</h4>
+                    <br>
+                    <a href="https://stackoverflow.com/questions/53453742/sum-values-in-couchdb-documents" class="btn btn-warning mb-3">Sum values in CouchDB documents</a>
+                    <a href="https://stackoverflow.com/questions/11151632/passing-an-object-to-client-in-node-express-ejs" class="btn btn-warning mb-3">Passing an object to client in Node/Express and EJS</a>
+                    <a href="https://stackoverflow.com/questions/39722998/how-to-get-sum-averages-etc-from-a-nested-array-of-numbers-in-documents-in-cou" class="btn btn-warning mb-3">How to get sum from a nested array of numbers in documents in Couchdb</a>
+                    <a href="https://stackoverflow.com/questions/6294794/how-to-sum-values-of-a-view-in-a-date-range-using-couchdb" class="btn btn-warning">How to sum values of a view in a date range using couchdb?</a>
+                </p>
 
+              <% } else{ %>  
+
+                <h1>You currently do not have any customers or pets in your hotel!</h1>
+                <h4>Click on the Customers tag in the navigation to add a customer.</h4>
+
+             <% } %>
+            
     </div>
 </body>
 <script>
