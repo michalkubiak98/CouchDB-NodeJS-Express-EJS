@@ -1,0 +1,97 @@
+<%- include('../partials/header')-%>
+<body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <%- include('../partials/navigation')-%>
+        <main role="main" class="inner cover">
+
+            
+
+            <h3 class="cover-heading">Add Customer</h3>
+            <h5>Enter name, surname and amount of pets owned!</h5>
+            <form method="post" action="/customer/add">
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Surname">Surname</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="Cats">Cats</label>
+                    <input type="text" class="form-control" id="cats" name="cats" placeholder="Enter Amount of Cats" required>
+                </div>
+                <div class="form-group">
+                    <label for="Dogs">Dogs</label>
+                    <input type="text" class="form-control" id="dogs" name="dogs" placeholder="Enter Amount of Dogs" required>
+                </div>
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
+
+                <br>
+                <br>
+                <h1 class="cover-heading">Customers List</h1>
+                <div class="container bg-light text-dark">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Cats</th>
+                                <th>Dogs</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%customers.forEach(function(customer) {%>
+                            <tr>
+                                <td><%=customer.value.name%></td>
+                                <td><%=customer.value.email%></td>
+                                <td><%=customer.value.cats%></td>
+                                <td><%=customer.value.dogs%></td>
+                                <td>
+                                    <form method="post" action="/customer/edit/<%=customer.key %>">
+                                        <div class="form-group">
+                                            <label for="Edit Name">Name</label>
+                                            <input type="text" class="form-control" id="editName" name="name" value="<%= customer.value.name%>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Surname">Surname</label>
+                                            <input type="text" class="form-control" id="editEmail" name="email" value="<%= customer.value.email%>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Cats">Cats</label>
+                                            <input type="text" class="form-control" id="editPets" name="cats" value="<%= customer.value.cats%>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Dogs">Dogs</label>
+                                            <input type="text" class="form-control" id="editPets" name="dogs" value="<%= customer.value.dogs%>" required>
+                                        </div>
+                                        <input type="hidden" value="<%= customer.value.rev %>" name="rev">
+                                        <button type="submit" class="btn btn-dark">Submit</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" action="/customer/delete/<%= customer.key %>">
+                                    <input type="hidden" value="<%= customer.value.rev %>" name="rev">
+                                    <button type="submit" class="btn btn-dark">Delete</button>
+                                </form>
+                            </td>
+                            </tr>
+                            <br>
+                            <%});%>
+                        </tbody>
+                    </table>
+                </div>
+
+        </main>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        document.getElementById('customers').classList.add('active');
+    };
+</script>
+
+</html>
