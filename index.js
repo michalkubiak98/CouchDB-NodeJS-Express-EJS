@@ -25,10 +25,7 @@ app.use(express.urlencoded({extended: false}));
 // Home
 app.get('/', (req,res) => {  
     couch.get(dbName, countPetsUrl).then(({data, headers, status}) => {
-        //const pets = data.rows[0]
-        //const newPets = pets.reduce((a, b) => a + b, 0)
         res.render('pages/home', {
-            // Get the total number of dogs and cats and add them
             pets: data.rows[0]
         });       
     }, err => {
