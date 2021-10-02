@@ -10,9 +10,6 @@ const couch = new NodeCouchdb({
     }
 });
 
-const getCustomersUrl = '_design/all_customers/_view/get_all_customers';
-const countPetsUrl = '_design/all_customers/_view/count_pets';
-
 const app = express();  
 
 app.set('view engine', 'ejs');  
@@ -21,6 +18,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('./public'));
 app.use (express.json());  
 app.use(express.urlencoded({extended: false}));  
+
+// Views
+const getCustomersUrl = '_design/all_customers/_view/get_all_customers';
+const countPetsUrl = '_design/all_customers/_view/count_pets';
 
 // Home
 app.get('/', (req,res) => {  
