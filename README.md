@@ -7,7 +7,7 @@ For the application and queries to work correctly, the database needs to have th
 
 ----
 
-Create a database called Customers'
+Create a database called 'Customers'
 
 The design document is called 'all_customers'
 
